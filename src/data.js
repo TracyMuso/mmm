@@ -1,7 +1,7 @@
 export const numsAndOps = [
 
       'AC',
-      '+/=',
+      '+/-',
       '%',
       '÷',
       '7' ,

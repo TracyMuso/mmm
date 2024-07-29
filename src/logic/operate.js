@@ -1,13 +1,17 @@
 import Big from "big.js";
 
 const Operate = (x, y, operation) => {
-  let first = Big(x)
-  let second = Big(y)
-  let op = operation
+  const first = Big(x)
+  const second = Big(y)
+  const op = operation
+  
   switch(op) {
     case ('÷'):
-      return first.div(second).toString()
-       
+      try {
+        return first.div(second).toString();
+      } catch (err) {
+        return 'Cannot divide by 0';
+      }
     case ('%'):
       try {
         return first.mod(second).toString();

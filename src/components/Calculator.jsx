@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import '../App.css'
 import { numsAndOps } from '../data';
 import Calculate from '../logic/calculate';
@@ -14,11 +14,28 @@ const Calc = () => {
     setState((prevState) => Calculate(prevState, buttonName));
   };
 
-  const { total, next } = state;
+  const [display, setDisplay] = useState('0');
+
+  useEffect(() => {
+    const { total, next, operation } = state;
+    if (!next && !total) {
+      setDisplay('0');
+    } else {
+      const expression = next ?? total;
+      if (operation && next !== null) {
+        setDisplay(`${next} ${operation}`);
+      } else if (operation && total !== null) {
+        setDisplay(`${total} ${operation}`);
+      } else {
+        setDisplay(expression);
+      }
+    }
+  }, [state]);
+
   return (
     <div className='container'>
        <div className="output">
-        {next || total || '0'}
+        { display }
       </div>
       <div className='nums-and-ops'>
         {numsAndOps.map((item, idx) => (
