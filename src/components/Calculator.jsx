@@ -16,21 +16,13 @@ const Calc = () => {
 
   const [display, setDisplay] = useState('0');
 
+
   useEffect(() => {
-    const { total, next, operation } = state;
-    if (!next && !total) {
-      setDisplay('0');
-    } else {
-      const expression = next ?? total;
-      if (operation && next !== null) {
-        setDisplay(`${next} ${operation}`);
-      } else if (operation && total !== null) {
-        setDisplay(`${total} ${operation}`);
-      } else {
-        setDisplay(expression);
-      }
-    }
+    const { total, next } = state;
+    if (!next && !total) setDisplay('0');
+    else setDisplay(next ?? total);
   }, [state]);
+
 
   return (
     <div className='container'>
