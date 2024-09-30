@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import '../App.css'
 import { numsAndOps } from '../data';
 import Calculate from '../logic/calculate';
+import Quote from './Quote';
 
 const Calc = () => {
   const [state, setState] = useState({
@@ -25,7 +26,8 @@ const Calc = () => {
 
 
   return (
-    <div className='container'>
+    <div>
+          <div className='container'>
        <div className="output">
         { display }
       </div>
@@ -36,6 +38,8 @@ const Calc = () => {
           </div>
         ))}
       </div>
+    </div>
+    <Quote />
     </div>
   )
 }
